@@ -19,6 +19,7 @@
 		28066FA72128BCC400F5505A /* ResultTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28066FA52128BCC400F5505A /* ResultTableCell.swift */; };
 		28066FA82128BCC400F5505A /* ResultTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28066FA62128BCC400F5505A /* ResultTableCell.xib */; };
 		28066FAA21292DCB00F5505A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28066FA921292DCB00F5505A /* Constant.swift */; };
+		28066FAC212964D900F5505A /* SaveCoreDataDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28066FAB212964D900F5505A /* SaveCoreDataDetails.swift */; };
 		AD49D36E72D22A35BBE784F8 /* Pods_MoneyTapTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB04693D71113C458D5BD5AE /* Pods_MoneyTapTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		28066FA52128BCC400F5505A /* ResultTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableCell.swift; sourceTree = "<group>"; };
 		28066FA62128BCC400F5505A /* ResultTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableCell.xib; sourceTree = "<group>"; };
 		28066FA921292DCB00F5505A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		28066FAB212964D900F5505A /* SaveCoreDataDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCoreDataDetails.swift; sourceTree = "<group>"; };
 		801624C52467D435660B7E36 /* Pods-MoneyTapTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTapTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTapTest/Pods-MoneyTapTest.release.xcconfig"; sourceTree = "<group>"; };
 		A731CE3B7CEFB1652B680267 /* Pods-MoneyTapTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTapTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTapTest/Pods-MoneyTapTest.debug.xcconfig"; sourceTree = "<group>"; };
 		EB04693D71113C458D5BD5AE /* Pods_MoneyTapTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTapTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				28066FA52128BCC400F5505A /* ResultTableCell.swift */,
 				28066FA62128BCC400F5505A /* ResultTableCell.xib */,
 				28066FA921292DCB00F5505A /* Constant.swift */,
+				28066FAB212964D900F5505A /* SaveCoreDataDetails.swift */,
 				28066F742128A56000F5505A /* Assets.xcassets */,
 				28066F762128A56000F5505A /* LaunchScreen.storyboard */,
 				28066F792128A56000F5505A /* Info.plist */,
@@ -231,6 +234,7 @@
 				28066FA22128BA2A00F5505A /* SearchVC.swift in Sources */,
 				28066F732128A55D00F5505A /* MoneyTapTest.xcdatamodeld in Sources */,
 				28066F802128A5BE00F5505A /* AlamofireConnectionMangager.swift in Sources */,
+				28066FAC212964D900F5505A /* SaveCoreDataDetails.swift in Sources */,
 				28066F6B2128A55D00F5505A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

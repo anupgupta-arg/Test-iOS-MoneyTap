@@ -71,11 +71,35 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//           https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=18630637&inprop=url
+
+        let dict : NSDictionary = pageArrayResult[indexPath.row] as! NSDictionary
         
-        OpenfullDetils(indexPath: indexPath.row)
+        var pageId: Int?
+        var subTitle : String?
+        var title : String?
+        var imgSource : String?
+        
+        if let Id : Int = dict["pageid"] as? Int{
+           pageId = Id
+        }
+        
+        if let termsDict: NSDictionary = dict.value(forKey: "terms") as? NSDictionary {
+            let descriptionArray : NSArray = termsDict.value(forKey: "description") as! NSArray//termsDict["description"]
+            subTitle = descriptionArray[0] as? String//"Gupta"
+        }
         
         
+        
+        if let imageDict : NSDictionary = dict["thumbnail"] as? NSDictionary {
+            imgSource = imageDict["source"] as? String
+           
+        }
+       title = dict["title"] as? String//"Anup"
+        
+        
+        OpenfullDetils(pageId: pageId!, subTitle : subTitle != nil ? subTitle! : "" , title: title!, imgSource : imgSource != nil ? imgSource! : "")
+        
+
     }
     
     // Mark:- Search Bar
@@ -135,11 +159,8 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     }
     
     
-    func OpenfullDetils(indexPath : Int){
-        
-        let dict : NSDictionary = pageArrayResult[indexPath] as! NSDictionary
-        
-        if let pageId = dict["pageid"] as? Int{
+    func OpenfullDetils(pageId: Int,subTitle : String,title : String,imgSource : String){
+   
             
             let param : NSDictionary = ["action":"query",
                                         "prop":"info",
@@ -147,14 +168,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
                                         "inprop":"url",
                                         "format":"json",
                                         "formatversion":"2"
-            ]
-            
-//            https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=\(pageId)&inprop=url")
-            
-//            https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=18630637&inprop=url
-            
-            
-            
+                ]
             AlamofireConnectionMangager.getSingleton().getDataFromServer(url: WikiApi.openDeatils, param: param, success: { (responseResult)->Void in
                             print(responseResult)
                 
@@ -165,15 +179,15 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
                 
                 let fullUrl : String = pageDict["fullurl"] as! String
                 print("fullUrl",fullUrl)
+                
+                
+              let saveStruct = searchResultStruct.init(title: title, subTitle: subTitle, imgUrl: imgSource, pageId: pageId, pageUrl: fullUrl)
+                SaveCoreDataDetails.getSingleton().saveDataIntoCoreData(saveStruct: saveStruct)
+                
                 self.openSafariVC(fullUrl: fullUrl)
             }, failure: {(err)-> Void in
                 print(err!);
             })
-           
-        }
-        else{
-            print("no deatils")
-        }
         
     }
     func openSafariVC(fullUrl : String){
@@ -188,7 +202,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     }
 }
 
-//struct searchResultStruct {
-//    var
-//    <#fields#>
-//}
+struct searchResultStruct {
+    var title : String?
+    var subTitle : String?
+    var imgUrl : String?
+    var pageId : Int
+    var pageUrl : String
+   
+}
